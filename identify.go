@@ -167,7 +167,7 @@ func identifyUrlValuer(decl ast.Decl) (typeName string, match bool) {
 func getFieldData(fieldsList []*ast.Field) []fieldSpec {
 	fields := []fieldSpec{}
 	for _, field := range fieldsList {
-		if !field.Names[0].IsExported() || field.Names[0].Name == "XXX_unrecognized" {
+		if len(field.Names) == 0 || !field.Names[0].IsExported() || field.Names[0].Name == "XXX_unrecognized" {
 			continue
 		}
 
